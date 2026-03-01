@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
+import { useProgress } from "@/contexts/ProgressContext";
 
 interface LessonCardProps {
   number: number;
@@ -10,10 +11,20 @@ interface LessonCardProps {
 }
 
 const LessonCard = ({ number, title, children, icon, delay = 0 }: LessonCardProps) => {
+  const { markLessonViewed } = useProgress();
+  const tracked = useRef(false);
+
   return (
     <motion.div
+      id={`lesson-${number}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
+      onViewportEnter={() => {
+        if (!tracked.current) {
+          tracked.current = true;
+          markLessonViewed(number);
+        }
+      }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay }}
       className="group relative rounded-xl glow-border glow-box gradient-quantum p-6 md:p-8 hover:scale-[1.02] transition-transform duration-300"

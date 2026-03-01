@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useProgress } from "@/contexts/ProgressContext";
 
 interface QuizQuestion {
   question: string;
@@ -9,10 +10,12 @@ interface QuizQuestion {
 }
 
 interface LessonQuizProps {
+  lessonNumber: number;
   questions: QuizQuestion[];
 }
 
-const LessonQuiz = ({ questions }: LessonQuizProps) => {
+const LessonQuiz = ({ lessonNumber, questions }: LessonQuizProps) => {
+  const { markQuizCompleted } = useProgress();
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -36,6 +39,7 @@ const LessonQuiz = ({ questions }: LessonQuizProps) => {
       setShowResult(false);
     } else {
       setFinished(true);
+      markQuizCompleted(lessonNumber, score, questions.length);
     }
   };
 
