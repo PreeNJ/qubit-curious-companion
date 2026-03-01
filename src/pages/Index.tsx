@@ -3,6 +3,7 @@ import QuantumParticles from "@/components/QuantumParticles";
 import LessonCard from "@/components/LessonCard";
 import QubitVisual from "@/components/QubitVisual";
 import AnalogiesSection from "@/components/AnalogiesSection";
+import EntanglementVisual from "@/components/EntanglementVisual";
 import heroImg from "@/assets/quantum-hero.jpg";
 
 const Index = () => {
@@ -87,6 +88,7 @@ const Index = () => {
             Einstein called it "spooky action at a distance." It's not magic — it's a proven quantum
             phenomenon that lets quantum computers coordinate computations in ways classical ones can't.
           </p>
+          <EntanglementVisual />
           <div className="mt-4 p-4 rounded-lg bg-primary/5 glow-border">
             <p className="font-mono text-sm text-primary">
               🧪 Think of it like this: Imagine two magic dice. No matter how far apart, when you roll
