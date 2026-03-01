@@ -5,6 +5,8 @@ import QubitVisual from "@/components/QubitVisual";
 import AnalogiesSection from "@/components/AnalogiesSection";
 import EntanglementVisual from "@/components/EntanglementVisual";
 import LessonQuiz from "@/components/LessonQuiz";
+import ProgressTracker from "@/components/ProgressTracker";
+import { ProgressProvider } from "@/contexts/ProgressContext";
 import heroImg from "@/assets/quantum-hero.jpg";
 
 const quizData = {
@@ -112,7 +114,9 @@ const quizData = {
 
 const Index = () => {
   return (
+    <ProgressProvider totalLessons={5}>
     <div className="min-h-screen bg-background text-foreground">
+      <ProgressTracker />
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -169,7 +173,7 @@ const Index = () => {
             <em> both at the same time</em> — until you measure it.
           </p>
           <QubitVisual />
-          <LessonQuiz questions={quizData.lesson1} />
+          <LessonQuiz lessonNumber={1} questions={quizData.lesson1} />
         </LessonCard>
 
         <LessonCard number={2} title="Superposition: Being Two Things at Once" icon="🌀" delay={0.1}>
@@ -182,7 +186,7 @@ const Index = () => {
             instead of checking them one by one like classical computers.
           </p>
           <AnalogiesSection />
-          <LessonQuiz questions={quizData.lesson2} />
+          <LessonQuiz lessonNumber={2} questions={quizData.lesson2} />
         </LessonCard>
 
         <LessonCard number={3} title="Entanglement: Spooky Action" icon="🔗" delay={0.1}>
@@ -201,7 +205,7 @@ const Index = () => {
               one and get a 4, the other <em>always</em> shows 4 too. That's entanglement.
             </p>
           </div>
-          <LessonQuiz questions={quizData.lesson3} />
+          <LessonQuiz lessonNumber={3} questions={quizData.lesson3} />
         </LessonCard>
 
         <LessonCard number={4} title="What Can Quantum Computers Actually Do?" icon="🚀" delay={0.1}>
@@ -224,7 +228,7 @@ const Index = () => {
               </li>
             ))}
           </ul>
-          <LessonQuiz questions={quizData.lesson4} />
+          <LessonQuiz lessonNumber={4} questions={quizData.lesson4} />
         </LessonCard>
 
         <LessonCard number={5} title="Why Don't We All Have One Yet?" icon="❄️" delay={0.1}>
@@ -250,7 +254,7 @@ const Index = () => {
               </div>
             ))}
           </div>
-          <LessonQuiz questions={quizData.lesson5} />
+          <LessonQuiz lessonNumber={5} questions={quizData.lesson5} />
         </LessonCard>
       </section>
 
@@ -261,6 +265,7 @@ const Index = () => {
         </p>
       </footer>
     </div>
+    </ProgressProvider>
   );
 };
 
