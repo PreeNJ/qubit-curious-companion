@@ -4,7 +4,111 @@ import LessonCard from "@/components/LessonCard";
 import QubitVisual from "@/components/QubitVisual";
 import AnalogiesSection from "@/components/AnalogiesSection";
 import EntanglementVisual from "@/components/EntanglementVisual";
+import LessonQuiz from "@/components/LessonQuiz";
 import heroImg from "@/assets/quantum-hero.jpg";
+
+const quizData = {
+  lesson1: [
+    {
+      question: "What is the basic unit of information in a quantum computer?",
+      options: ["Bit", "Byte", "Qubit", "Pixel"],
+      correctIndex: 2,
+      explanation: "A qubit (quantum bit) is the quantum equivalent of a classical bit, but it can exist in superposition.",
+    },
+    {
+      question: "What happens to a qubit when you measure it?",
+      options: ["It stays in superposition", "It collapses to 0 or 1", "It disappears", "It doubles"],
+      correctIndex: 1,
+      explanation: "Measurement forces a qubit to 'collapse' from superposition into a definite state — either 0 or 1.",
+    },
+  ],
+  lesson2: [
+    {
+      question: "What is superposition?",
+      options: [
+        "A qubit being only 0",
+        "A qubit being both 0 and 1 simultaneously",
+        "Two qubits connected together",
+        "A type of computer chip",
+      ],
+      correctIndex: 1,
+      explanation: "Superposition means a qubit exists in both states at once until it's measured.",
+    },
+    {
+      question: "The spinning coin analogy represents superposition because:",
+      options: [
+        "Coins are round like qubits",
+        "It's neither heads nor tails until caught",
+        "It always lands on heads",
+        "Coins are made of quantum material",
+      ],
+      correctIndex: 1,
+      explanation: "Just like a spinning coin is neither heads nor tails, a qubit in superposition is both 0 and 1 until measured.",
+    },
+  ],
+  lesson3: [
+    {
+      question: "What is quantum entanglement?",
+      options: [
+        "Two qubits physically touching",
+        "A qubit spinning very fast",
+        "Two qubits whose states are instantly correlated",
+        "A quantum computer overheating",
+      ],
+      correctIndex: 2,
+      explanation: "Entangled qubits are correlated — measuring one instantly determines the state of the other, regardless of distance.",
+    },
+    {
+      question: "Who called entanglement 'spooky action at a distance'?",
+      options: ["Newton", "Hawking", "Einstein", "Bohr"],
+      correctIndex: 2,
+      explanation: "Albert Einstein famously used this phrase because he found the instant correlation between entangled particles unsettling.",
+    },
+  ],
+  lesson4: [
+    {
+      question: "Quantum computers are best described as:",
+      options: [
+        "Faster at everything than classical computers",
+        "Excellent at specific types of problems",
+        "Only useful for gaming",
+        "Identical to classical computers",
+      ],
+      correctIndex: 1,
+      explanation: "Quantum computers aren't universally faster — they excel at specific tasks like molecular simulation, cryptography, and optimization.",
+    },
+    {
+      question: "Which is NOT a typical quantum computing application?",
+      options: ["Drug discovery", "Word processing", "Cryptography", "Climate modeling"],
+      correctIndex: 1,
+      explanation: "Word processing doesn't benefit from quantum computing. Quantum computers shine in problems involving massive parallelism and complex simulations.",
+    },
+  ],
+  lesson5: [
+    {
+      question: "Why must most quantum computers be kept extremely cold?",
+      options: [
+        "To save electricity",
+        "To prevent decoherence",
+        "To make them faster",
+        "Because they run on ice",
+      ],
+      correctIndex: 1,
+      explanation: "Qubits are extremely fragile. Even tiny thermal vibrations cause decoherence, destroying their quantum properties.",
+    },
+    {
+      question: "What is decoherence?",
+      options: [
+        "When qubits gain more power",
+        "When qubits lose their quantum properties",
+        "When two computers connect",
+        "When a measurement succeeds",
+      ],
+      correctIndex: 1,
+      explanation: "Decoherence is when environmental interference causes qubits to lose superposition and behave like ordinary bits.",
+    },
+  ],
+};
 
 const Index = () => {
   return (
@@ -65,6 +169,7 @@ const Index = () => {
             <em> both at the same time</em> — until you measure it.
           </p>
           <QubitVisual />
+          <LessonQuiz questions={quizData.lesson1} />
         </LessonCard>
 
         <LessonCard number={2} title="Superposition: Being Two Things at Once" icon="🌀" delay={0.1}>
@@ -77,6 +182,7 @@ const Index = () => {
             instead of checking them one by one like classical computers.
           </p>
           <AnalogiesSection />
+          <LessonQuiz questions={quizData.lesson2} />
         </LessonCard>
 
         <LessonCard number={3} title="Entanglement: Spooky Action" icon="🔗" delay={0.1}>
@@ -95,6 +201,7 @@ const Index = () => {
               one and get a 4, the other <em>always</em> shows 4 too. That's entanglement.
             </p>
           </div>
+          <LessonQuiz questions={quizData.lesson3} />
         </LessonCard>
 
         <LessonCard number={4} title="What Can Quantum Computers Actually Do?" icon="🚀" delay={0.1}>
@@ -117,6 +224,7 @@ const Index = () => {
               </li>
             ))}
           </ul>
+          <LessonQuiz questions={quizData.lesson4} />
         </LessonCard>
 
         <LessonCard number={5} title="Why Don't We All Have One Yet?" icon="❄️" delay={0.1}>
@@ -142,6 +250,7 @@ const Index = () => {
               </div>
             ))}
           </div>
+          <LessonQuiz questions={quizData.lesson5} />
         </LessonCard>
       </section>
 
